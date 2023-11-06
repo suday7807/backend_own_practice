@@ -4,6 +4,8 @@ import taskRouter from "./routes/task.js";
 import {connectDB} from "./data/database.js";
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
+import { errorMiddleware } from "./middlewares/error.js";
+
 
 
 const app = express();
@@ -21,8 +23,7 @@ app.use("/api/v1/task",taskRouter)
 
 
 
-
-
+app.use(errorMiddleware)
 
 
 app.get("/",(req,res)=>{
